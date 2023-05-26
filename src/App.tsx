@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const createItems = () => {
+
+        let array = [];
+
+        for (let i = 1; i < 37; i++) {
+            let object = {hasItem: false, clicked: false};
+            array.push(object);
+        }
+        console.log(array);
+
+        const randomIndex = Math.floor(Math.random() * (array.length - 1));
+        const element = array[randomIndex];
+        element.hasItem = true;
+        console.log(element.hasItem);
+
+        return array;
+
+    };
+
+    const [items, setItems] = useState(createItems());
+
+    const changeBackground = () => {
+        const itemCopy = [...items];
+        const indexCopy = {...itemCopy[1]};
+        indexCopy.clicked = true;
+        itemCopy[1] = indexCopy;
+        setItems(itemCopy);
+        console.log(indexCopy.clicked);
+    };
+
+
+
+    return (
+        <div className="App">
+
+        </div>
+    );
+};
 
 export default App;
