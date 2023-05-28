@@ -3,20 +3,23 @@
 }
 
 .game-board {
-  display: flex;
-  flex-wrap: wrap;
-  width: 384px;
-  height: 384px;
-  border: 2px solid black;
-  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+  border: 2px solid #000;
+  width: 650px;
+  height: 650px;
+  margin: 0 auto;
+  padding: 30px;
 }
 
 .cell {
-  width: 60px;
-  height: 60px;
-  background-color: #7d7979;
+  width: 100px;
+  height: 100px;
+  background-color: gray;
   display: inline-block;
-  margin: 2px;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -29,7 +32,7 @@
 }
 
 .reset-button {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 

@@ -2,21 +2,15 @@ import React, { useState } from 'react';
 import Counter from "./components/Counter/Counter";
 import CellField from "./components/CellField/CellField";
 import ResetButton from "./components/ResetButton/ResetButton";
-import { nanoid } from "nanoid";
+import {ICharacter} from "./types";
 import './App.css';
 
 const App = () => {
-    const createItems = () => {
-        let array = [];
-
-        const keys = [];
+    const createItems = ():ICharacter[] => {
+        let array:ICharacter[] = [];
 
         for (let i = 0; i < 36; i++) {
-            keys.push(nanoid());
-        }
-
-        for (let i = 0; i < 36; i++) {
-            let object = { hasItem: false, clicked: false, id: keys[i] };
+            let object:ICharacter = { hasItem: false, clicked: false};
             array.push(object);
         }
         console.log(array);
@@ -29,16 +23,16 @@ const App = () => {
         return array;
     };
 
-    const [items, setItems] = useState(createItems());
+    const [items, setItems] = useState<ICharacter[]>(createItems());
 
     const [attempts, setAttempts] = useState(0);
 
 
-    const changeBackground = (id: number) => {
+    const changeBackground = (index: number) => {
         const itemCopy = [...items];
-        const indexCopy = { ...itemCopy[id] };
+        const indexCopy = { ...itemCopy[index] };
         indexCopy.clicked = true;
-        itemCopy[id] = indexCopy;
+        itemCopy[index] = indexCopy;
         setItems(itemCopy);
         setAttempts(attempts + 1);
     };

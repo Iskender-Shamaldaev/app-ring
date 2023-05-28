@@ -3,18 +3,18 @@ import Cell from "../Cell/Cell";
 
 interface CellFieldProps {
     items: { hasItem: boolean; clicked: boolean }[];
-    onCellClick: (id: number) => void;
+    onCellClick: (index: number) => void;
 }
 
 const CellField: React.FC<CellFieldProps> = ({ items, onCellClick }) => {
     return (
         <div className="game-board">
-            {items.map((item, id) => (
+            {items.map((item, index) => (
                 <Cell
-                    key={id}
+                    key={index}
                     hasItem={item.hasItem}
                     clicked={item.clicked}
-                    onClick={() => onCellClick(id)}
+                    onClick={() => onCellClick(index)}
                 />
             ))}
         </div>

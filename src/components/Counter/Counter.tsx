@@ -5,7 +5,7 @@ interface CounterProps {
 }
 
 const Counter: React.FC<CounterProps> = ({ attempts }) => {
-    return <div className="counter">Attempts: {attempts}</div>;
+    return <div className="counter">Tries: {attempts}</div>;
 };
 
 export default Counter;
