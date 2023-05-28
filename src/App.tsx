@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
+import Counter from "./components/Counter/Counter";
+import Cell from "./components/Cell/Cell";
 
 const App = () => {
     const createItems = () => {
@@ -33,10 +35,18 @@ const App = () => {
     };
 
 
-
     return (
         <div className="App">
-
+            <h1>Try to play the game "Find the Ring"!</h1>
+            <div className="container">
+                {items.map((cell) => (
+                    <Cell
+                        onClickCell={() => changeBackground()}
+                    />
+                ))}
+            </div>
+            <Counter cellCount={items.length}/>
+            <button>Reset</button>
         </div>
     );
 };

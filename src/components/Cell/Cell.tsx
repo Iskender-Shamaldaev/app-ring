@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Cell = () => {
-    return (
-        <div>
+interface ICellProps extends React.PropsWithChildren {
+    onClickCell: React.MouseEventHandler;
+}
 
-        </div>
+const Cell: React.FC<ICellProps> = ({onClickCell}) => {
+    return (
+            <div className="cell" onClick={onClickCell}></div>
     );
 };
 
