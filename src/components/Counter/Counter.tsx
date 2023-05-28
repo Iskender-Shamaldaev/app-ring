@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface CounterProps {
-    attempts: number;
+    tries: number;
 }
 
-const Counter: React.FC<CounterProps> = ({ attempts }) => {
-    return <div className="counter">Tries: {attempts}</div>;
+const Counter: React.FC<CounterProps> = ({ tries }) => {
+    return <p className="counter">Tries: {tries}</p>;
 };
 
 export default Counter;

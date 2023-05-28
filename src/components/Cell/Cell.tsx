@@ -7,8 +7,15 @@ interface CellProps {
 }
 
 const Cell: React.FC<CellProps> = ({ hasItem, clicked, onClick }) => {
-    const cellClassName = clicked ? 'cell-clicked' : 'cell';
-    const cellContent = clicked && hasItem ? 'O' : '';
+    let cellClassName = 'cell';
+    let cellContent = '';
+
+    if (clicked) {
+        cellClassName = 'cell-clicked';
+        if (hasItem) {
+            cellContent = '💍';
+        }
+    }
 
     return (
         <div className={cellClassName} onClick={onClick}>
@@ -18,3 +25,4 @@ const Cell: React.FC<CellProps> = ({ hasItem, clicked, onClick }) => {
 };
 
 export default Cell;
+

@@ -13,19 +13,17 @@ const App = () => {
             let object:ICharacter = { hasItem: false, clicked: false};
             array.push(object);
         }
-        console.log(array);
 
-        const randomIndex = Math.floor(Math.random() * (array.length - 1));
+        const randomIndex = Math.floor(Math.random() * (array.length));
         const element = array[randomIndex];
         element.hasItem = true;
-        console.log(element.hasItem);
 
         return array;
     };
 
     const [items, setItems] = useState<ICharacter[]>(createItems());
 
-    const [attempts, setAttempts] = useState(0);
+    const [tries, setTries] = useState(0);
 
 
     const changeBackground = (index: number) => {
@@ -34,20 +32,19 @@ const App = () => {
         indexCopy.clicked = true;
         itemCopy[index] = indexCopy;
         setItems(itemCopy);
-        setAttempts(attempts + 1);
+        setTries(tries + 1);
     };
-
 
     const reset = () => {
         setItems(createItems());
-        setAttempts(0);
+        setTries(0);
     };
 
     return (
         <div className="App">
             <h1>Try to play the game "Find the Ring"!</h1>
             <CellField items={items} onCellClick={changeBackground} />
-            <Counter attempts={attempts} />
+            <Counter tries={tries} />
             <ResetButton onReset={reset} />
         </div>
     );

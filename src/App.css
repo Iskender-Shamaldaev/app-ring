@@ -3,8 +3,8 @@
 }
 
 .game-board {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 10px;
   border: 2px solid #000;
   width: 650px;
@@ -25,6 +25,12 @@
 
 .cell-clicked {
   background-color: white;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .counter {
@@ -32,7 +38,7 @@
 }
 
 .reset-button {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 
