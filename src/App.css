@@ -2,20 +2,34 @@
   text-align: center;
 }
 
-.container {
+.game-board {
   display: flex;
   flex-wrap: wrap;
-  width: 504px;
+  width: 384px;
+  height: 384px;
   border: 2px solid black;
-  text-align: center;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .cell {
-  width: 70px;
-  height: 70px;
-  border: 2px solid #ccc;
+  width: 60px;
+  height: 60px;
   background-color: #7d7979;
   display: inline-block;
-  margin: 5px;
+  margin: 2px;
+  cursor: pointer;
 }
+
+.cell-clicked {
+  background-color: white;
+}
+
+.counter {
+  margin-top: 20px;
+}
+
+.reset-button {
+  margin-top: 10px;
+}
+
+

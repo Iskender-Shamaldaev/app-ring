@@ -1,12 +1,19 @@
 import React from 'react';
 
-interface ICellProps extends React.PropsWithChildren {
-    onClickCell: React.MouseEventHandler;
+interface CellProps {
+    hasItem: boolean;
+    clicked: boolean;
+    onClick: () => void;
 }
 
-const Cell: React.FC<ICellProps> = ({onClickCell}) => {
+const Cell: React.FC<CellProps> = ({ hasItem, clicked, onClick }) => {
+    const cellClassName = clicked ? 'cell-clicked' : 'cell';
+    const cellContent = clicked && hasItem ? 'O' : '';
+
     return (
-            <div className="cell" onClick={onClickCell}></div>
+        <div className={cellClassName} onClick={onClick}>
+            {cellContent}
+        </div>
     );
 };
 

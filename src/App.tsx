@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
-import './App.css';
+import React, { useState } from 'react';
 import Counter from "./components/Counter/Counter";
-import Cell from "./components/Cell/Cell";
+import CellField from "./components/CellField/CellField";
+import ResetButton from "./components/ResetButton/ResetButton";
+import { nanoid } from "nanoid";
+import './App.css';
 
 const App = () => {
     const createItems = () => {
-
         let array = [];
 
-        for (let i = 1; i < 37; i++) {
-            let object = {hasItem: false, clicked: false};
+        const keys = [];
+
+        for (let i = 0; i < 36; i++) {
+            keys.push(nanoid());
+        }
+
+        for (let i = 0; i < 36; i++) {
+            let object = { hasItem: false, clicked: false, id: keys[i] };
             array.push(object);
         }
         console.log(array);
@@ -20,33 +27,34 @@ const App = () => {
         console.log(element.hasItem);
 
         return array;
-
     };
 
     const [items, setItems] = useState(createItems());
 
-    const changeBackground = () => {
+    const [attempts, setAttempts] = useState(0);
+
+
+    const changeBackground = (id: number) => {
         const itemCopy = [...items];
-        const indexCopy = {...itemCopy[1]};
+        const indexCopy = { ...itemCopy[id] };
         indexCopy.clicked = true;
-        itemCopy[1] = indexCopy;
+        itemCopy[id] = indexCopy;
         setItems(itemCopy);
-        console.log(indexCopy.clicked);
+        setAttempts(attempts + 1);
     };
 
+
+    const reset = () => {
+        setItems(createItems());
+        setAttempts(0);
+    };
 
     return (
         <div className="App">
             <h1>Try to play the game "Find the Ring"!</h1>
-            <div className="container">
-                {items.map((cell) => (
-                    <Cell
-                        onClickCell={() => changeBackground()}
-                    />
-                ))}
-            </div>
-            <Counter cellCount={items.length}/>
-            <button>Reset</button>
+            <CellField items={items} onCellClick={changeBackground} />
+            <Counter attempts={attempts} />
+            <ResetButton onReset={reset} />
         </div>
     );
 };
