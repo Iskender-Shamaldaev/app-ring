@@ -1,8 +1,9 @@
 import React from 'react';
 import Cell from "../Cell/Cell";
+import {ICharacter} from "../../types";
 
 interface CellFieldProps {
-    items: { hasItem: boolean; clicked: boolean }[];
+    items: ICharacter[];
     onCellClick: (index: number) => void;
 }
 

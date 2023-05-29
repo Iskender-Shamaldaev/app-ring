@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 
 interface ResetButtonProps {
-    onReset: () => void;
+    onReset: MouseEventHandler;
 }
 
 const ResetButton: React.FC<ResetButtonProps> = ({ onReset }) => {

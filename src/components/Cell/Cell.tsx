@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 
 interface CellProps {
     hasItem: boolean;
     clicked: boolean;
-    onClick: () => void;
+    onClick: MouseEventHandler;
 }
 
 const Cell: React.FC<CellProps> = ({ hasItem, clicked, onClick }) => {
     let cellClassName = 'cell';
     let cellContent = '';
+
 
     if (clicked) {
         cellClassName = 'cell-clicked';

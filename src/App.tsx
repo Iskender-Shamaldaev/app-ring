@@ -32,7 +32,11 @@ const App = () => {
         indexCopy.clicked = true;
         itemCopy[index] = indexCopy;
         setItems(itemCopy);
-        setTries(tries + 1);
+
+        if(!items[index].clicked) {
+            setTries(tries + 1);
+        }
+
     };
 
     const reset = () => {
